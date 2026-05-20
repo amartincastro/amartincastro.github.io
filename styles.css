@@ -165,13 +165,7 @@ main {
 }
 
 .about-body {
-  display: grid;
-  grid-template-columns: 6rem 1fr;
-  gap: 2rem;
-}
-
-.about-body::before {
-  content: "";
+  padding-left: 8rem;
 }
 
 .about-body p {
@@ -331,8 +325,7 @@ main {
   }
 
   .about-body {
-    grid-template-columns: 1fr;
-    gap: 0;
+    padding-left: 0;
   }
 
   .work {
