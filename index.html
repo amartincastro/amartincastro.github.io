@@ -122,5 +122,18 @@
       <a href="https://linkedin.com/in/arielmcastro">linkedin</a>
     </div>
   </footer>
+
+  <script>
+    document.querySelectorAll('.project-row').forEach(function (row) {
+      var link = row.querySelector('a[href]:not([href="#"])');
+      if (!link) return;
+      row.classList.add('clickable');
+      row.addEventListener('click', function (e) {
+        if (e.target.closest('a')) return;
+        if (window.getSelection().toString().length > 0) return;
+        window.location.href = link.href;
+      });
+    });
+  </script>
 </body>
 </html>

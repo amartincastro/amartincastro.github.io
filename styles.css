@@ -222,6 +222,10 @@ main {
   background: var(--bg-soft);
 }
 
+.project-row.clickable {
+  cursor: pointer;
+}
+
 .project-row .col-year {
   color: var(--ink-faint);
   font-size: 0.9rem;
