@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>A. Martin Castro — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <span class="brand-mark">~/</span><span class="brand-name">amartincastro</span>
+    </div>
+    <nav>
+      <a href="#work">work</a>
+      <a href="#about">about</a>
+      <a href="mailto:castroarielm@gmail.com">contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="hero-label">name</div>
+        <h1 class="hero-name">A. Martin Castro</h1>
+
+        <div class="hero-label">role</div>
+        <p class="hero-role">UI design &amp; engineering · Darling Consulting Group</p>
+
+        <div class="hero-label">status</div>
+        <p class="hero-status"><span class="pulse"></span> Currently shipping at DCG</p>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <div class="section-head">
+        <span class="section-num">01</span>
+        <span class="section-label">About</span>
+      </div>
+      <div class="about-body">
+        <p>
+          I lead UI design and engineering at <strong>Darling Consulting Group</strong>,
+          building data visualization and customer-facing interfaces for the banking
+          industry — and lead dev on DCG's website and design system.
+        </p>
+        <p>
+          Previously, UI Lead at <strong>Lulius Innovation</strong> shipping UI for
+          the U.S. Department of Defense, and Principal Software Developer at the
+          <strong>Nevada Gaming Control Board</strong>, where I led the frontend team
+          building the agency's first web component design system for law
+          enforcement software.
+        </p>
+        <p>
+          I care about systems that age well: clear data models, honest UI, and
+          the kind of polish that only shows up if you sit with a problem long enough.
+        </p>
+      </div>
+    </section>
+
+    <section id="work" class="work">
+      <div class="section-head">
+        <span class="section-num">02</span>
+        <span class="section-label">Selected work</span>
+      </div>
+
+      <table class="project-table">
+        <thead>
+          <tr>
+            <th class="col-year">year</th>
+            <th class="col-title">project</th>
+            <th class="col-role">role / org</th>
+            <th class="col-stack">stack</th>
+            <th class="col-link"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="project-row">
+            <td class="col-year">'23–'25</td>
+            <td class="col-title">
+              <span class="project-name">Customer-facing AI features</span>
+              <span class="project-blurb">Designed and shipped ChatDCG and FilterAI inside Deposits360 — two AI surfaces with complementary jobs (explain vs. do). Live with hundreds of paying banks.</span>
+            </td>
+            <td class="col-role">Sole designer · DCG</td>
+            <td class="col-stack">GPT-4.1 · RAG · JSON</td>
+            <td class="col-link"><a href="case-studies/customer-facing-ai/">→</a></td>
+          </tr>
+          <tr class="project-row">
+            <td class="col-year">'17–'25</td>
+            <td class="col-title">
+              <span class="project-name">[Project — awaiting details]</span>
+              <span class="project-blurb">Project from Lulius Innovation (U.S. Department of Defense work).</span>
+            </td>
+            <td class="col-role">UI Lead · Lulius</td>
+            <td class="col-stack">—</td>
+            <td class="col-link"><a href="#">→</a></td>
+          </tr>
+          <tr class="project-row">
+            <td class="col-year">'20–'21</td>
+            <td class="col-title">
+              <span class="project-name">[Project — awaiting details]</span>
+              <span class="project-blurb">Project from Nevada Gaming Control Board — web component design system for law enforcement software.</span>
+            </td>
+            <td class="col-role">Principal dev · NV GCB</td>
+            <td class="col-stack">ASP.NET MVC Core · Bootstrap</td>
+            <td class="col-link"><a href="#">→</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-left">
+      <span class="prompt">$</span> echo "© 2026 A. Martin Castro"
+    </div>
+    <div class="footer-links">
+      <a href="mailto:castroarielm@gmail.com">email</a>
+      <a href="https://github.com/amartincastro">github</a>
+      <a href="https://linkedin.com/in/arielmcastro">linkedin</a>
+    </div>
+  </footer>
+</body>
+</html>

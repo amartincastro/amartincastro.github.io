@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Customer-facing AI features — A. Martin Castro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a href="../../" class="brand-link">
+      <div class="brand">
+        <span class="brand-mark">~/</span><span class="brand-name">amartincastro</span>
+      </div>
+    </a>
+    <nav>
+      <a href="../../#work">work</a>
+      <a href="../../#about">about</a>
+      <a href="mailto:castroarielm@gmail.com">contact</a>
+    </nav>
+  </header>
+
+  <main class="case-study">
+    <a class="back-link" href="../../#work">← all work</a>
+
+    <section class="case-hero">
+      <div class="case-meta">
+        <span>'23–'25</span>
+        <span class="dot">·</span>
+        <span>Sole designer</span>
+        <span class="dot">·</span>
+        <span>Darling Consulting Group</span>
+      </div>
+      <h1 class="case-title">Customer-facing AI features</h1>
+      <p class="case-lede">
+        Two AI surface areas inside Deposits360 — ChatDCG and FilterAI — designed
+        with deliberately different jobs. One explains, one does. Live with hundreds
+        of paying banks; same model, opposite temperatures.
+      </p>
+    </section>
+
+    <section class="case-summary">
+      <div class="summary-grid">
+        <div class="summary-cell">
+          <div class="summary-label">products</div>
+          <div class="summary-value">ChatDCG · FilterAI</div>
+        </div>
+        <div class="summary-cell">
+          <div class="summary-label">platform</div>
+          <div class="summary-value">Deposits360 · Loans360</div>
+        </div>
+        <div class="summary-cell">
+          <div class="summary-label">role</div>
+          <div class="summary-value">Sole designer (UI/UX + content)</div>
+        </div>
+        <div class="summary-cell">
+          <div class="summary-label">timeline</div>
+          <div class="summary-value">2 yrs · shipped 2025</div>
+        </div>
+        <div class="summary-cell">
+          <div class="summary-label">stack</div>
+          <div class="summary-value">GPT-4.1 · RAG · structured outputs</div>
+        </div>
+        <div class="summary-cell">
+          <div class="summary-label">audience</div>
+          <div class="summary-value">Bank CFOs at hundreds of community + small banks</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <div class="section-head-cs">
+        <span class="section-num">00</span>
+        <span class="section-label">Overview</span>
+      </div>
+      <div class="case-body">
+        <p>
+          Deposits360 is DCG's flagship platform for community and small-bank
+          treasury teams — ALM analysts and CFOs use it to model balances, plan
+          rates, and monitor risk across their institution and across the market.
+        </p>
+        <p>
+          Most teams shipping AI into products in 2024 shipped one chat box. We
+          shipped two features instead — because what bank CFOs actually need
+          from AI in a financial planning tool is two different jobs, and
+          conflating them makes both worse.
+        </p>
+        <ul class="job-split">
+          <li><strong>ChatDCG explains.</strong> Q&amp;A about the product, banking terms, and how features connect — built on RAG over markdown docs the business team owns.</li>
+          <li><strong>FilterAI does.</strong> Configures the actual product UI from a plain-language description — built as deterministic structured-output generation, not RAG.</li>
+        </ul>
+        <p>
+          They share a model (GPT-4.1) and a brand cue (the "AI" mark) but
+          almost nothing else under the hood. Below is a side-by-side, then a
+          deeper look at each.
+        </p>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <div class="section-head-cs">
+        <span class="section-num">01</span>
+        <span class="section-label">Side by side</span>
+      </div>
+      <div class="comparison">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>ChatDCG</th>
+              <th>FilterAI</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>job</td><td>Explain</td><td>Do</td></tr>
+            <tr><td>pattern</td><td>RAG (vector store)</td><td>Structured output (validated JSON)</td></tr>
+            <tr><td>model</td><td>GPT-4.1</td><td>GPT-4.1</td></tr>
+            <tr><td>temperature</td><td>0.3 — natural prose</td><td><strong>0.0</strong> — fully deterministic</td></tr>
+            <tr><td>context source</td><td>Markdown docs in vector store</td><td>Live institution metadata injected per prompt</td></tr>
+            <tr><td>output</td><td>Rich HTML (marked.js + DOMPurify)</td><td>Validated JSON filter predicates</td></tr>
+            <tr><td>UI surface</td><td>Right-side panel</td><td>Inline filter bar</td></tr>
+            <tr><td>used in</td><td>Deposits360</td><td>Deposits360 · Loans360</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <div class="section-head-cs">
+        <span class="section-num">02</span>
+        <span class="section-label">ChatDCG — answer the question, don't lose the page</span>
+      </div>
+      <div class="case-body">
+        <h3>The problem</h3>
+        <p>
+          Bank CFOs got stuck three ways: calling DCG support, googling banking
+          terms (and getting wrong answers), or stumbling through glossaries
+          and the app trying to find the right page. Each path was slow, and
+          the third one had a real risk — interpreting the wrong metric.
+        </p>
+
+        <h3>The approach</h3>
+        <p>
+          ChatDCG is a right-side panel that opens beside the product, not over
+          it. The CFO sees their own bank's numbers and the answer at the same
+          time. Responses are structured with headings and bullets, and where
+          it makes sense, the answer points back into the product
+          ("click the MCOF value on the Deposit Migration page") instead of
+          replacing it.
+        </p>
+
+        <figure class="case-figure">
+          <img src="../../assets/chatdcg/image%202.png" alt="ChatDCG panel open beside Deposits360, answering a question about MCOF and Cannibalization calculations" />
+          <figcaption>
+            ChatDCG sits beside the live data. The CFO can read the explanation
+            of MCOF without losing sight of their bank's current rates.
+          </figcaption>
+        </figure>
+
+        <figure class="case-figure">
+          <img src="../../assets/chatdcg/image%203.png" alt="ChatDCG detail showing a structured response with What it does / How it helps / What you can do sub-bullets" />
+          <figcaption>
+            Structured responses use a "What it does / How it helps / What you
+            can do" format and deep-link to specific product pages (Rate
+            Planner here) — keeping the AI an extension of the product, not a
+            substitute.
+          </figcaption>
+        </figure>
+
+        <h3>UI decisions</h3>
+        <ul class="ui-bullets">
+          <li>
+            <strong>Familiar chat UX.</strong> Bank CFOs use ChatGPT and Claude
+            at home. The interface borrows their conventions (turn-based chat,
+            send button, suggested input) so there's nothing to learn.
+          </li>
+          <li>
+            <strong>Disclaimer at the top of every response.</strong> "AI
+            Generated content may be incorrect." Persistent, in-line, low-key.
+          </li>
+          <li>
+            <strong>Branded entry point next to help.</strong> The ChatDCG
+            button sits next to the help icon — framing AI as an extension of
+            help, not a separate mode users have to remember.
+          </li>
+          <li>
+            <strong>Bank-aware context.</strong> The selected institution flows
+            into every prompt, so answers are framed in that bank's reality.
+          </li>
+        </ul>
+
+        <h3>Architecture</h3>
+        <p>
+          A small backend service routes user messages plus conversation
+          history to GPT-4.1 with file search enabled, against a vector store
+          of six knowledge files covering product behavior, banking terms, and
+          calculation methods. Responses come back as markdown, get sanitized
+          through marked.js + DOMPurify, and render inline. Conversations and
+          messages persist in SQL Server alongside thumbs-up / thumbs-down
+          feedback.
+        </p>
+        <p>
+          The most interesting piece isn't the chat path — it's the
+          <strong>content ops pipeline</strong>. DCG's business team edits the
+          knowledge base as markdown in a Bitbucket repo
+          (<code>d360-ai-knowledge</code>), and a CI/CD job pushes changes
+          through <code>vector_upload.py</code> into the vector store.
+          Non-engineers own the answers ChatDCG gives.
+        </p>
+        <p>
+          A separate Python process running GPT-5.2 reads conversations
+          weekly and produces an HTML sentiment report — closing the loop on
+          response quality without instrumenting every interaction in
+          production.
+        </p>
+
+        <figure class="case-figure">
+          <img src="../../assets/chatdcg/architecture.png" alt="ChatDCG architecture diagram showing the chat path through GPT-4.1 with vector store, plus the markdown-to-Bitbucket-to-CI/CD content ops pipeline and the sentiment analysis loop" />
+          <figcaption>
+            ChatDCG architecture. Three loops: the chat path (blue), the
+            content ops pipeline business owns (yellow), and the sentiment
+            analysis feedback loop (purple).
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <div class="section-head-cs">
+        <span class="section-num">03</span>
+        <span class="section-label">FilterAI — configure the product in plain language</span>
+      </div>
+      <div class="case-body">
+        <h3>The problem</h3>
+        <p>
+          Deposits360 pages have four configurable surface areas — filters,
+          metrics, indices, and group-by settings — each with dozens of valid
+          combinations. Setting them up to answer a specific question ("show
+          CDs with balances over $250K opened in the last 12 months") was
+          hard, slow, and mistake-prone. CFOs frequently abandoned the
+          configuration mid-way, or got the wrong view and didn't realize.
+        </p>
+
+        <h3>The approach</h3>
+        <p>
+          FilterAI lives <em>inside</em> the existing Filter bar — same place
+          users already manage filters — marked with a small "AI" badge. They
+          type what they want in plain language; FilterAI configures the page.
+          The result is the regular product, with the regular controls visible
+          and editable. Nothing is hidden behind a chat metaphor.
+        </p>
+
+        <figure class="case-figure">
+          <img src="../../assets/filterai/image%204%20(1).png" alt="FilterAI applied to a Deposit Mix Trends chart in Deposits360, showing the configured chart and a confirmation message" />
+          <figcaption>
+            "MMDA vs Savings trends" — three words become a configured Deposit
+            Mix Trends chart. A confirmation line ("Grouped the data to
+            compare MMDA and Savings account trends over time") plus a "show
+            more" link make the action inspectable, not magic.
+          </figcaption>
+        </figure>
+
+        <h3>UI decisions</h3>
+        <ul class="ui-bullets">
+          <li>
+            <strong>Scope discipline.</strong> The launch copy explicitly says
+            FilterAI <em>does not</em> interpret results, answer analytical
+            questions, or provide insights. That copy lives in the product so
+            users never confuse it with ChatDCG. Two AI features, two clean
+            jobs.
+          </li>
+          <li>
+            <strong>No new panel.</strong> Lives in the existing Filter bar.
+            One AI badge says "AI" and that's the whole new mental model.
+          </li>
+          <li>
+            <strong>Inspectable, not magic.</strong> A natural-language
+            confirmation tells users what just happened; a "show more" link
+            drills into the exact configuration applied.
+          </li>
+          <li>
+            <strong>Shared feedback pattern.</strong> Thumbs-up / thumbs-down
+            sit inline with the result — same mechanism users see in ChatDCG.
+            Two surfaces, one feedback loop.
+          </li>
+        </ul>
+
+        <h3>Architecture</h3>
+        <p>
+          Unlike ChatDCG, FilterAI is not RAG-based. It's a
+          <strong>structured-output generator</strong>: the user's natural
+          language gets composed with the institution's live metadata (its
+          chart of accounts, available products, group-by hierarchies) and
+          passed to GPT-4.1 at <strong>temperature 0.0</strong>. The model
+          returns validated JSON predicates that the product applies directly
+          to its filter engine.
+        </p>
+        <p>Generation happens in two steps:</p>
+        <ol class="ui-bullets">
+          <li>
+            <strong>Recommend the relevant fields</strong> from the
+            institution's schema.
+          </li>
+          <li>
+            <strong>Generate concrete predicates</strong> — values, bounds,
+            and hierarchy paths — against those fields.
+          </li>
+        </ol>
+        <p>
+          The split keeps the model honest about what it's doing. It also
+          handles complex exclusion logic ("all NMDs except MMDA") that pure
+          natural-language-to-SQL approaches reliably get wrong.
+        </p>
+        <p>
+          Recent additions: metrics selection and the Cross-Institution
+          Analytics (CIA) toggle, both reachable in plain language. The
+          backend is monitored for indirect prompt-injection and dependency
+          naming collisions — a security stance most "AI in product" stories
+          skip.
+        </p>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <div class="section-head-cs">
+        <span class="section-num">04</span>
+        <span class="section-label">Outcome</span>
+      </div>
+      <div class="case-body">
+        <p>
+          Both features are live in Deposits360, used by <strong>hundreds of
+          paying customer banks</strong>. FilterAI has expanded into Loans360
+          and continues to absorb new product surfaces (metrics, CIA toggle).
+          ChatDCG's content base grows weekly because the business team owns
+          the markdown.
+        </p>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <div class="section-head-cs">
+        <span class="section-num">05</span>
+        <span class="section-label">What made this hard</span>
+      </div>
+      <div class="case-body">
+        <p>
+          FilterAI took two years. Not because the requirements were murky —
+          they weren't — but because the AI tooling underneath was evolving
+          in real time. Models changed mid-build. Structured output APIs
+          arrived. Vector store offerings consolidated. Function calling
+          replaced earlier patterns. Every engineering decision was made
+          against a moving floor.
+        </p>
+        <p>
+          The choices that aged best were the ones grounded in the product,
+          not the tooling: a job-split between explain and do; a UI that
+          embeds inside existing controls instead of adopting a chat-only
+          paradigm; a content pipeline owned by business so the answers
+          could evolve without engineering. The model under the hood will
+          change again. The shape of the features won't have to.
+        </p>
+      </div>
+    </section>
+
+    <nav class="case-footer-nav">
+      <a class="back-link" href="../../#work">← all work</a>
+    </nav>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-left">
+      <span class="prompt">$</span> echo "© 2026 A. Martin Castro"
+    </div>
+    <div class="footer-links">
+      <a href="mailto:castroarielm@gmail.com">email</a>
+      <a href="https://github.com/amartincastro">github</a>
+      <a href="https://linkedin.com/in/arielmcastro">linkedin</a>
+    </div>
+  </footer>
+</body>
+</html>
