@@ -68,6 +68,16 @@ a:hover {
   color: var(--ink-soft);
 }
 
+.site-header nav .nav-num {
+  color: var(--ink-faint);
+  margin-right: 0.35rem;
+  transition: color 0.15s ease;
+}
+
+.site-header nav a:hover .nav-num {
+  color: var(--accent);
+}
+
 /* Main */
 main {
   max-width: var(--max);
@@ -205,6 +215,48 @@ main {
 /* Work */
 .work {
   padding: 5rem 0 6rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+/* Contact (home page section 03) */
+.contact {
+  padding: 5rem 0 6rem;
+}
+
+.contact-body {
+  padding-left: 8rem;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 7rem 1fr;
+  gap: 0.85rem 1.5rem;
+  align-items: baseline;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  margin: 0;
+  max-width: 32rem;
+}
+
+.contact-label {
+  font-size: 0.8rem;
+  color: var(--ink-faint);
+  letter-spacing: 0.04em;
+  text-transform: lowercase;
+}
+
+.contact-value {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+
+.contact-value a {
+  color: inherit;
+  transition: color 0.15s ease;
+}
+
+.contact-value a:hover {
+  color: var(--accent);
 }
 
 .project-table {
@@ -361,6 +413,27 @@ main {
 
   .work {
     padding: 3rem 0 4rem;
+  }
+
+  .contact {
+    padding: 3rem 0 4rem;
+  }
+
+  .contact-body {
+    padding-left: 0;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 0.25rem 0;
+  }
+
+  .contact-label {
+    margin-top: 0.75rem;
+  }
+
+  .contact-label:first-child {
+    margin-top: 0;
   }
 
   .project-table thead {
