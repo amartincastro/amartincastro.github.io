@@ -498,6 +498,23 @@ main.case-study {
   text-transform: lowercase;
 }
 
+.redacted {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  background: rgba(125, 211, 163, 0.08);
+  border: 1px solid var(--rule);
+  color: var(--ink-faint);
+  padding: 0.05em 0.4em;
+  border-radius: 3px;
+  font-size: 0.85em;
+  letter-spacing: 0.04em;
+}
+
+.summary-value.redacted-line {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.85rem;
+  line-height: 1.8;
+}
+
 .summary-value {
   font-size: 0.95rem;
   color: var(--ink);
@@ -645,6 +662,10 @@ main.case-study {
   margin: 2rem 0 2.5rem;
   padding: 0;
   max-width: none;
+}
+
+.case-figure--small {
+  max-width: 22rem;
 }
 
 .case-figure img {
