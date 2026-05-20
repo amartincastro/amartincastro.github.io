@@ -165,7 +165,25 @@ main {
 }
 
 .about-body {
-  padding-left: 8rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.about-headshot {
+  width: 6rem;
+  height: 6rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--rule);
+  background: var(--bg-soft);
+}
+
+.about-text {
+  flex: 1;
+  min-width: 0;
+  max-width: 38em;
 }
 
 .about-body p {
@@ -334,7 +352,12 @@ main {
   }
 
   .about-body {
-    padding-left: 0;
+    gap: 1.25rem;
+  }
+
+  .about-headshot {
+    width: 4rem;
+    height: 4rem;
   }
 
   .work {
