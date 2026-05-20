@@ -11,9 +11,11 @@
 </head>
 <body>
   <header class="site-header">
-    <div class="brand">
-      <span class="brand-mark">~/</span><span class="brand-name">amartincastro</span>
-    </div>
+    <a href="#" class="brand-link" aria-label="Back to top">
+      <div class="brand">
+        <span class="brand-mark">~/</span><span class="brand-name">amartincastro</span>
+      </div>
+    </a>
     <nav>
       <a href="#about"><span class="nav-num">01</span> about</a>
       <a href="#work"><span class="nav-num">02</span> work</a>
@@ -159,6 +161,13 @@
         if (e.target.closest('a')) return;
         if (window.getSelection().toString().length > 0) return;
         window.location.href = link.href;
+      });
+    });
+
+    document.querySelectorAll('.brand-link[href="#"]').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     });
   </script>
