@@ -753,6 +753,98 @@ main.case-study {
   max-width: 22rem;
 }
 
+/* Code block (used inside case bodies for skill snippets, etc.) */
+.case-body pre {
+  background: var(--bg-soft);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 1.25rem;
+  overflow-x: auto;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.78rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  margin: 1.5rem 0 2rem;
+}
+
+.case-body pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+}
+
+/* System snapshot: side-by-side swatch + code on desktop */
+.system-snapshot {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin: 2rem 0 2.5rem;
+  align-items: start;
+}
+
+.system-snapshot pre {
+  margin: 0;
+  height: 100%;
+}
+
+/* Color swatch grid */
+.color-swatch {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.6rem;
+}
+
+.swatch-item {
+  background: var(--bg-soft);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.swatch-fill {
+  width: 100%;
+  height: 3.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.swatch-meta {
+  padding: 0.45rem 0.7rem 0.55rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.swatch-name {
+  font-family: "Inter", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.swatch-hex {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.7rem;
+  color: var(--ink-faint);
+}
+
+@media (max-width: 768px) {
+  .system-snapshot {
+    grid-template-columns: 1fr;
+  }
+
+  .color-swatch {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .color-swatch {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 /* Side-by-side figure row (used when two photos belong together) */
 .case-figures-row {
   display: grid;

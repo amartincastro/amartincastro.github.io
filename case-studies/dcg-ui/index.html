@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>dcg-ui — a Claude skill for design system consistency across stacks — A. Martin Castro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a href="../../" class="brand-link">
+      <div class="brand">
+        <span class="brand-mark">~/</span><span class="brand-name">amartincastro</span>
+      </div>
+    </a>
+    <nav>
+      <a href="../../#about"><span class="nav-num">01</span> about</a>
+      <a href="../../#work"><span class="nav-num">02</span> work</a>
+      <a href="../../#contact"><span class="nav-num">03</span> contact</a>
+    </nav>
+  </header>
+
+  <main class="case-study">
+    <a class="back-link" href="../../#work">← all work</a>
+
+    <section class="case-hero">
+      <div class="case-meta">
+        <span>'25–'26</span>
+        <span class="dot">·</span>
+        <span>Sole designer</span>
+        <span class="dot">·</span>
+        <span>Darling Consulting Group</span>
+      </div>
+      <h1 class="case-title">dcg-ui — a Claude skill for design system consistency across stacks</h1>
+      <p class="case-lede">
+        A Claude skill built on top of DCG's Figma design system. Detects the
+        project's tech stack — <span class="redacted-line">VB6, Angular, Blazor, ASP.NET Core, React, more</span> —
+        and generates brand-correct components in the right idiom. Used daily
+        by <strong>25 engineers and 4 product managers</strong>.
+      </p>
+    </section>
+
+    <section class="case-summary">
+      <div class="summary-grid">
+        <div class="summary-cell">
+          <div class="summary-label">type</div>
+          <div class="summary-value">Claude skill (Anthropic Skills)</div>
+        </div>
+        <div class="summary-cell">
+          <div class="summary-label">substrate</div>
+          <div class="summary-value">DCG Figma design system</div>
+        </div>
+        <div class="summary-cell">
+          <div class="summary-label">role</div>
+          <div class="summary-value">Sole designer · author</div>
+        </div>
+        <div class="summary-cell">
+          <div class="summary-label">timeline</div>
+          <div class="summary-value">Figma: years · Skill: 2025</div>
+        </div>
+        <div class="summary-cell">
+          <div class="summary-label">stacks supported</div>
+          <div class="summary-value">VB6 · Angular · Blazor · ASP.NET · React · Durandal · more</div>
+        </div>
+        <div class="summary-cell">
+          <div class="summary-label">users</div>
+          <div class="summary-value">25 engineers · 4 product managers</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <div class="section-head-cs">
+        <span class="section-num">00</span>
+        <span class="section-label">Overview</span>
+      </div>
+      <div class="case-body">
+        <p>
+          DCG's product suite has accumulated technology layers over decades.
+          A given customer's experience spans interfaces written in <em>VB6</em>
+          (still load-bearing in places), <em>Durandal</em> and <em>Knockout</em>
+          (the previous web generation), <em>ASP.NET Core</em>, <em>Blazor</em>,
+          <em>Angular</em>, and, increasingly, <em>React</em>. Every product
+          ships with the same logo, the same name on the same invoice — but
+          historically each stack had its own UI dialect.
+        </p>
+        <p>
+          The design system fixes <strong>what</strong> a DCG component should
+          look like. The hard part has always been <strong>how to make that
+          true</strong> on every stack the company ships on — without sitting
+          a designer behind each engineer.
+        </p>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <div class="section-head-cs">
+        <span class="section-num">01</span>
+        <span class="section-label">The design system</span>
+      </div>
+      <div class="case-body">
+        <p>
+          The system itself was built in Figma over many years. Colors,
+          typography, spacing, component variants, states, charts, and the
+          patterns that hold them together — all documented as the source of
+          truth for any DCG product.
+        </p>
+        <p>
+          Designers can read it. Product managers can read it. Engineers can
+          read it. But "readable" doesn't translate into a button that ships
+          with the right corner radius on a Blazor page in a 2019 codebase.
+          For that, somebody has to apply judgment — historically, me.
+        </p>
+        <p>
+          The system gets unusually detailed where it matters most for
+          financial software. Data visualization, for instance, has its own
+          multi-page treatment: chart anatomy, tooltip type sizes, legend
+          ordering and wrapping behavior, and a separate institution /
+          cross-institution palette specifically for data series — distinct
+          from the brand palette. Charts are the most data-dense UI element
+          in DCG products and the most likely place for brand drift if every
+          stack implements them on its own.
+        </p>
+
+        <figure class="case-figure">
+          <img src="../../assets/dcg-ui/image%205.png" alt="DCG Figma design system page showing chart anatomy — tile header, plotted data, tile header detail, tile, tooltip, Y-axis, X-axis, and legend, all labeled" />
+          <figcaption>
+            Charts anatomy. Every part labeled — tile, plot, tooltip, axes,
+            legend — so a chart implementation in any stack knows what "a
+            chart" actually contains.
+          </figcaption>
+        </figure>
+
+        <figure class="case-figure">
+          <img src="../../assets/dcg-ui/image%206.png" alt="DCG Figma design system page showing chart labels, tooltips, legends, and the institution / cross-institution color palettes with exact hex values" />
+          <figcaption>
+            Labels, legends, and color. The institution and cross-institution
+            data-viz palettes — distinct from the brand palette — with exact
+            hex values, plus rules for legend wrapping, 9px Avenir tooltip
+            type, and grayscale market rates.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <div class="section-head-cs">
+        <span class="section-num">02</span>
+        <span class="section-label">Encoding the system</span>
+      </div>
+      <div class="case-body">
+        <p>
+          The Claude skill is a single markdown file (~17KB) that translates the
+          Figma system into something a model can apply consistently. Brand
+          identity, the full color palette with usage rules, typography,
+          component standards (buttons, inputs, dropdowns, toggles, date
+          pickers, charts), UX principles, and per-stack output rules. When a
+          developer asks Claude for a component, the skill loads and the
+          response comes back already on-brand.
+        </p>
+
+        <div class="system-snapshot">
+          <div class="color-swatch">
+            <div class="swatch-item">
+              <div class="swatch-fill" style="background: #0055b8"></div>
+              <div class="swatch-meta">
+                <div class="swatch-name">Primary</div>
+                <div class="swatch-hex">#0055b8</div>
+              </div>
+            </div>
+            <div class="swatch-item">
+              <div class="swatch-fill" style="background: #23A6DE"></div>
+              <div class="swatch-meta">
+                <div class="swatch-name">Secondary</div>
+                <div class="swatch-hex">#23A6DE</div>
+              </div>
+            </div>
+            <div class="swatch-item">
+              <div class="swatch-fill" style="background: #faa41a"></div>
+              <div class="swatch-meta">
+                <div class="swatch-name">Contrast</div>
+                <div class="swatch-hex">#faa41a</div>
+              </div>
+            </div>
+            <div class="swatch-item">
+              <div class="swatch-fill" style="background: #3F724B"></div>
+              <div class="swatch-meta">
+                <div class="swatch-name">Profit</div>
+                <div class="swatch-hex">#3F724B</div>
+              </div>
+            </div>
+            <div class="swatch-item">
+              <div class="swatch-fill" style="background: #AE0101"></div>
+              <div class="swatch-meta">
+                <div class="swatch-name">Loss</div>
+                <div class="swatch-hex">#AE0101</div>
+              </div>
+            </div>
+            <div class="swatch-item">
+              <div class="swatch-fill" style="background: #F2F2F2"></div>
+              <div class="swatch-meta">
+                <div class="swatch-name">Disabled</div>
+                <div class="swatch-hex">#F2F2F2</div>
+              </div>
+            </div>
+          </div>
+
+          <pre><code>## Color Palette
+
+| Name      | Hex       | Usage                          |
+|-----------|-----------|--------------------------------|
+| Primary   | #0055b8   | Primary actions, headings      |
+| Secondary | #23A6DE   | Secondary accents, 360° mark   |
+| Contrast  | #faa41a   | Highlights, cross-institution  |
+| Profit    | #3F724B   | Positive values, gains         |
+| Loss      | #AE0101   | Negative values, errors        |
+| Disabled  | #F2F2F2   | Muted/inactive surfaces        |
+
+**Rules:**
+- Never introduce colors outside this palette
+- Profit/Loss reserved for financial meaning only
+- Exact hex values — no approximation
+- WCAG AA contrast required</code></pre>
+        </div>
+
+        <p>
+          The skill is the same shape for every other token — typography, button
+          variants, input states, validation colors, chart palettes, the
+          difference between a generic toggle and the amber cross-institution
+          toggle. Designer intent, machine-readable.
+        </p>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <div class="section-head-cs">
+        <span class="section-num">03</span>
+        <span class="section-label">Stack-agnostic by design</span>
+      </div>
+      <div class="case-body">
+        <p>
+          The unlock isn't the palette — it's the <strong>per-stack output</strong>.
+          Before the skill generates anything, it detects the project's
+          framework from files in the working directory. Then it adapts the
+          component to that framework's conventions — template syntax, data
+          binding, lifecycle, file layout.
+        </p>
+
+        <pre><code>## Step 1: Detect the Tech Stack
+
+Before generating any component, identify the project's tech
+stack by examining:
+- `package.json` — Angular, Durandal/Knockout, or other JS frameworks
+- `*.csproj` or `*.sln` files — Blazor or ASP.NET
+- `*.vbp` or `*.vbw` files — VB6
+- Existing component files and folder structure
+
+If you cannot determine the stack, ask the developer which
+framework they are using before proceeding.
+
+Adapt all component output to match the detected framework's
+conventions (templates, data binding syntax, file structure,
+lifecycle, etc.).</code></pre>
+
+        <p>
+          A VB6 maintainer gets a form with the right corner radius and the
+          right blue. An Angular dev gets the same component as a
+          properly-structured class with the right inputs and outputs. A
+          Blazor dev gets a razor file with the brand-correct CSS. Same
+          design system, three different idioms, no designer in the loop.
+        </p>
+
+        <figure class="case-figure">
+          <img src="../../assets/dcg-ui/skill-in-action.png" alt="Console-style screenshot of Claude using the dcg-ui skill to generate a brand-correct component" />
+          <figcaption>
+            The skill at work. Stack detected, component generated in the
+            right idiom, brand rules applied without prompt engineering.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <div class="section-head-cs">
+        <span class="section-num">04</span>
+        <span class="section-label">Outcome</span>
+      </div>
+      <div class="case-body">
+        <ul class="ui-bullets">
+          <li>
+            <strong>25 engineers</strong> use the skill across DCG's product
+            suite — from VB6 maintainers to React engineers on the newest
+            surfaces.
+          </li>
+          <li>
+            <strong>4 product managers</strong> use it to mock up new
+            features directly from specifications, without spending the day
+            in Figma. This is the part I didn't expect.
+          </li>
+          <li>
+            <strong>One source of truth</strong>, applied automatically to
+            every stack DCG ships. The Figma system stays the constitution;
+            the skill is how it actually lands.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <div class="section-head-cs">
+        <span class="section-num">05</span>
+        <span class="section-label">What changes when PMs can ship components</span>
+      </div>
+      <div class="case-body">
+        <p>
+          The engineer adoption story was the expected one. We made design
+          system compliance cheaper than ignoring it, so engineers ship
+          on-brand by default. Good. Predictable.
+        </p>
+        <p>
+          The <em>product manager</em> adoption was the surprise. Four PMs
+          who'd never touched Figma started using the skill to convert
+          written specs into working component mockups they could attach to
+          tickets. Designer-as-gatekeeper turned into designer-as-substrate:
+          the system I built encodes my judgment well enough that PMs can
+          apply it without me being in the room.
+        </p>
+        <p>
+          That's the part I'm thinking about for the next version. The Figma
+          system is finite — you can fully describe the rules once and
+          they're done. The set of people who can usefully apply those rules
+          isn't finite. A skill is a force multiplier for everyone
+          downstream of it.
+        </p>
+      </div>
+    </section>
+
+    <nav class="case-footer-nav">
+      <a class="back-link" href="../../#work">← all work</a>
+    </nav>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-left">
+      <span class="prompt">$</span> echo "© 2026 A. Martin Castro"
+    </div>
+    <div class="footer-links">
+      <a href="mailto:castroarielm@gmail.com">email</a>
+      <a href="https://github.com/amartincastro">github</a>
+      <a href="https://linkedin.com/in/arielmcastro">linkedin</a>
+    </div>
+  </footer>
+</body>
+</html>
