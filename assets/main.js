@@ -32,14 +32,20 @@
       var match = a.getAttribute('href').match(/#([^\/]+)$/);
       if (!match) return;
       var el = document.getElementById(match[1]);
-      if (el) sections.push({ id: match[1], el: el, link: a });
+      if (el) sections.push({ id: match[1], el: el, link: a, head: el.querySelector('.section-head') });
     });
     if (!sections.length) return;
 
     function setActive(id) {
-      navLinks.forEach(function (l) { l.classList.remove('active'); });
+      sections.forEach(function (s) {
+        s.link.classList.remove('active');
+        if (s.head) s.head.classList.remove('active');
+      });
       var match = sections.find(function (s) { return s.id === id; });
-      if (match) match.link.classList.add('active');
+      if (match) {
+        match.link.classList.add('active');
+        if (match.head) match.head.classList.add('active');
+      }
     }
 
     function update() {

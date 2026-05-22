@@ -79,7 +79,7 @@ section[id] {
 }
 
 code, .mono, .brand, .brand-mark, .brand-name, .hero-label,
-.section-num, .col-year, .col-stack, .col-link, .prompt {
+.section-num, .section-label, .col-year, .col-stack, .col-link, .prompt {
   font-family: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
 }
 
@@ -244,14 +244,20 @@ main {
 .section-num {
   font-size: 0.85rem;
   color: var(--ink-faint);
+  transition: color 0.2s ease;
 }
 
 .section-label {
   font-size: 0.85rem;
   color: var(--ink-soft);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  text-transform: lowercase;
   font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.section-head.active .section-num,
+.section-head.active .section-label {
+  color: var(--accent);
 }
 
 /* About */
