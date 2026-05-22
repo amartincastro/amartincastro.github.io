@@ -442,6 +442,75 @@ main {
   transform: translateX(3px);
 }
 
+/* Case-study reading indicator (injected by main.js) */
+.read-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: transparent;
+  z-index: 200;
+  pointer-events: none;
+}
+
+.read-progress-bar {
+  height: 100%;
+  width: 0;
+  background: var(--accent);
+  transition: width 0.1s ease-out;
+}
+
+.section-indicator {
+  position: fixed;
+  bottom: 1.25rem;
+  right: 1.5rem;
+  z-index: 90;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.75rem;
+  color: var(--ink-faint);
+  background: rgba(22, 22, 26, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 0.35rem 0.65rem;
+  letter-spacing: 0.02em;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+}
+
+.section-indicator.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-indicator .current {
+  color: var(--accent);
+}
+
+.section-indicator .total {
+  color: var(--ink-soft);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .read-progress-bar,
+  .section-indicator {
+    transition: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-indicator {
+    bottom: 1rem;
+    right: 1rem;
+    font-size: 0.7rem;
+    padding: 0.3rem 0.55rem;
+  }
+}
+
 /* 404 page */
 .not-found {
   max-width: 56rem;

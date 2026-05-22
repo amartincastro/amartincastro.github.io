@@ -65,6 +65,64 @@
     update();
   })();
 
+  // Case-study reading indicator: progress hairline + section badge
+  (function () {
+    if (!document.querySelector('main.case-study')) return;
+    var sections = Array.from(document.querySelectorAll('.case-section'));
+    if (!sections.length) return;
+
+    var progressWrap = document.createElement('div');
+    progressWrap.className = 'read-progress';
+    progressWrap.setAttribute('aria-hidden', 'true');
+    var progressBar = document.createElement('div');
+    progressBar.className = 'read-progress-bar';
+    progressWrap.appendChild(progressBar);
+    document.body.appendChild(progressWrap);
+
+    var indicator = document.createElement('div');
+    indicator.className = 'section-indicator';
+    indicator.setAttribute('aria-hidden', 'true');
+    var currentSpan = document.createElement('span');
+    currentSpan.className = 'current';
+    currentSpan.textContent = '01';
+    var totalSpan = document.createElement('span');
+    totalSpan.className = 'total';
+    totalSpan.textContent = String(sections.length).padStart(2, '0');
+    indicator.appendChild(document.createTextNode('[ '));
+    indicator.appendChild(currentSpan);
+    indicator.appendChild(document.createTextNode(' / '));
+    indicator.appendChild(totalSpan);
+    indicator.appendChild(document.createTextNode(' ]'));
+    document.body.appendChild(indicator);
+
+    function update() {
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      var pct = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+      progressBar.style.width = (pct * 100) + '%';
+
+      var triggerLine = window.innerHeight * 0.4;
+      var currentIdx = -1;
+      for (var i = 0; i < sections.length; i++) {
+        var rect = sections[i].getBoundingClientRect();
+        if (rect.top - triggerLine < 0) {
+          currentIdx = i;
+        } else {
+          break;
+        }
+      }
+      if (currentIdx >= 0) {
+        currentSpan.textContent = String(currentIdx + 1).padStart(2, '0');
+        indicator.classList.add('visible');
+      } else {
+        indicator.classList.remove('visible');
+      }
+    }
+
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update, { passive: true });
+    update();
+  })();
+
   // Section fade-up on scroll-in
   (function () {
     if (!('IntersectionObserver' in window)) return;
