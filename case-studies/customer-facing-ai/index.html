@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Customer-facing AI features — A. Martin Castro</title>
+  <title>Customer-facing AI features · A. Martin Castro</title>
   <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -37,7 +37,7 @@
       </div>
       <h1 class="case-title">Customer-facing AI features</h1>
       <p class="case-lede">
-        Two AI surface areas inside Deposits360 — ChatDCG and FilterAI — designed
+        Two AI surface areas inside Deposits360 (ChatDCG and FilterAI), designed
         with deliberately different jobs. One explains, one does. Live with hundreds
         of paying banks; same model, opposite temperatures.
       </p>
@@ -80,18 +80,18 @@
       <div class="case-body">
         <p>
           Deposits360 is DCG's flagship platform for community and small-bank
-          treasury teams — ALM analysts and CFOs use it to model balances, plan
+          treasury teams. ALM analysts and CFOs use it to model balances, plan
           rates, and monitor risk across their institution and across the market.
         </p>
         <p>
-          Most teams shipping AI into products in 2024 shipped one chat box. We
-          shipped two features instead — because what bank CFOs actually need
-          from AI in a financial planning tool is two different jobs, and
-          conflating them makes both worse.
+          In 2024 most teams shipping AI into products shipped one chat box. We
+          shipped two features because bank CFOs need two different jobs from AI
+          in a financial planning tool, and combining them into one interface
+          degrades both.
         </p>
         <ul class="job-split">
-          <li><strong>ChatDCG explains.</strong> Q&amp;A about the product, banking terms, and how features connect — built on RAG over markdown docs the business team owns.</li>
-          <li><strong>FilterAI does.</strong> Configures the actual product UI from a plain-language description — built as deterministic structured-output generation, not RAG.</li>
+          <li><strong>ChatDCG explains.</strong> Q&amp;A about the product, banking terms, and how features connect. Built on RAG over markdown docs the business team owns.</li>
+          <li><strong>FilterAI does.</strong> Configures the actual product UI from a plain-language description. Built as deterministic structured-output generation, not RAG.</li>
         </ul>
         <p>
           They share a model (GPT-4.1) and a brand cue (the "AI" mark) but
@@ -119,7 +119,7 @@
             <tr><td>job</td><td>Explain</td><td>Do</td></tr>
             <tr><td>pattern</td><td>RAG (vector store)</td><td>Structured output (validated JSON)</td></tr>
             <tr><td>model</td><td>GPT-4.1</td><td>GPT-4.1</td></tr>
-            <tr><td>temperature</td><td>0.3 — natural prose</td><td><strong>0.0</strong> — fully deterministic</td></tr>
+            <tr><td>temperature</td><td>0.3 (natural prose)</td><td><strong>0.0</strong> (fully deterministic)</td></tr>
             <tr><td>context source</td><td>Markdown docs in vector store</td><td>Live institution metadata injected per prompt</td></tr>
             <tr><td>output</td><td>Rich HTML (marked.js + DOMPurify)</td><td>Validated JSON filter predicates</td></tr>
             <tr><td>UI surface</td><td>Right-side panel</td><td>Inline filter bar</td></tr>
@@ -132,7 +132,7 @@
     <section class="case-section">
       <div class="section-head-cs">
         <span class="section-num">02</span>
-        <span class="section-label">ChatDCG — answer the question, don't lose the page</span>
+        <span class="section-label">ChatDCG: answer the question, don't lose the page</span>
       </div>
       <div class="case-body">
         <h3>The problem</h3>
@@ -140,7 +140,7 @@
           Bank CFOs got stuck three ways: calling DCG support, googling banking
           terms (and getting wrong answers), or stumbling through glossaries
           and the app trying to find the right page. Each path was slow, and
-          the third one had a real risk — interpreting the wrong metric.
+          the third one had a real risk: interpreting the wrong metric.
         </p>
 
         <h3>The approach</h3>
@@ -166,8 +166,7 @@
           <figcaption>
             Structured responses use a "What it does / How it helps / What you
             can do" format and deep-link to specific product pages (Rate
-            Planner here) — keeping the AI an extension of the product, not a
-            substitute.
+            Planner here), keeping the AI as an extension of the product.
           </figcaption>
         </figure>
 
@@ -184,8 +183,8 @@
           </li>
           <li>
             <strong>Branded entry point next to help.</strong> The ChatDCG
-            button sits next to the help icon — framing AI as an extension of
-            help, not a separate mode users have to remember.
+            button sits next to the help icon, framing AI as an extension of
+            help rather than a separate mode users have to remember.
           </li>
           <li>
             <strong>Bank-aware context.</strong> The selected institution flows
@@ -204,16 +203,15 @@
           feedback.
         </p>
         <p>
-          The most interesting piece isn't the chat path — it's the
-          <strong>content ops pipeline</strong>. DCG's business team edits the
-          knowledge base as markdown in a Bitbucket repo
-          (<code>d360-ai-knowledge</code>), and a CI/CD job pushes changes
-          through <code>vector_upload.py</code> into the vector store.
-          Non-engineers own the answers ChatDCG gives.
+          The <strong>content ops pipeline</strong> is what makes this work.
+          DCG's business team edits the knowledge base as markdown in a
+          Bitbucket repo (<code>d360-ai-knowledge</code>), and a CI/CD job
+          pushes changes through <code>vector_upload.py</code> into the vector
+          store. Non-engineers own the answers ChatDCG gives.
         </p>
         <p>
           A separate Python process running GPT-5.2 reads conversations
-          weekly and produces an HTML sentiment report — closing the loop on
+          weekly and produces an HTML sentiment report, closing the loop on
           response quality without instrumenting every interaction in
           production.
         </p>
@@ -232,13 +230,13 @@
     <section class="case-section">
       <div class="section-head-cs">
         <span class="section-num">03</span>
-        <span class="section-label">FilterAI — configure the product in plain language</span>
+        <span class="section-label">FilterAI: configure the product in plain language</span>
       </div>
       <div class="case-body">
         <h3>The problem</h3>
         <p>
-          Deposits360 pages have four configurable surface areas — filters,
-          metrics, indices, and group-by settings — each with dozens of valid
+          Deposits360 pages have four configurable surface areas (filters,
+          metrics, indices, and group-by settings), each with dozens of valid
           combinations. Setting them up to answer a specific question ("show
           CDs with balances over $250K opened in the last 12 months") was
           hard, slow, and mistake-prone. CFOs frequently abandoned the
@@ -247,20 +245,20 @@
 
         <h3>The approach</h3>
         <p>
-          FilterAI lives <em>inside</em> the existing Filter bar — same place
-          users already manage filters — marked with a small "AI" badge. They
-          type what they want in plain language; FilterAI configures the page.
-          The result is the regular product, with the regular controls visible
-          and editable. Nothing is hidden behind a chat metaphor.
+          FilterAI lives <em>inside</em> the existing Filter bar (the same
+          place users already manage filters), marked with a small "AI" badge.
+          They type what they want in plain language; FilterAI configures the
+          page. The result is the regular product, with the regular controls
+          visible and editable. Nothing is hidden behind a chat metaphor.
         </p>
 
         <figure class="case-figure">
           <img src="../../assets/filterai/filter%20ai.png" alt="FilterAI applied to a Deposit Mix Trends chart in Deposits360, showing the configured chart and a confirmation message" />
           <figcaption>
-            "MMDA vs Savings trends" — three words become a configured Deposit
+            "MMDA vs Savings trends": three words become a configured Deposit
             Mix Trends chart. A confirmation line ("Grouped the data to
             compare MMDA and Savings account trends over time") plus a "show
-            more" link make the action inspectable, not magic.
+            more" link make the action inspectable.
           </figcaption>
         </figure>
 
@@ -284,8 +282,8 @@
           </li>
           <li>
             <strong>Shared feedback pattern.</strong> Thumbs-up / thumbs-down
-            sit inline with the result — same mechanism users see in ChatDCG.
-            Two surfaces, one feedback loop.
+            sit inline with the result, the same mechanism users see in
+            ChatDCG. Both surfaces feed into one loop.
           </li>
         </ul>
 
@@ -306,8 +304,8 @@
             institution's schema.
           </li>
           <li>
-            <strong>Generate concrete predicates</strong> — values, bounds,
-            and hierarchy paths — against those fields.
+            <strong>Generate concrete predicates</strong> (values, bounds,
+            and hierarchy paths) against those fields.
           </li>
         </ol>
         <p>
@@ -319,7 +317,7 @@
           Recent additions: metrics selection and the Cross-Institution
           Analytics (CIA) toggle, both reachable in plain language. The
           backend is monitored for indirect prompt-injection and dependency
-          naming collisions — a security stance most "AI in product" stories
+          naming collisions, a security stance most "AI in product" stories
           skip.
         </p>
       </div>
@@ -348,20 +346,20 @@
       </div>
       <div class="case-body">
         <p>
-          FilterAI took two years. Not because the requirements were murky —
-          they weren't — but because the AI tooling underneath was evolving
-          in real time. Models changed mid-build. Structured output APIs
-          arrived. Vector store offerings consolidated. Function calling
-          replaced earlier patterns. Every engineering decision was made
-          against a moving floor.
+          FilterAI took two years. The requirements were clear from the
+          start, but the AI tooling underneath was evolving in real time.
+          Models changed mid-build. Structured output APIs arrived. Vector
+          store offerings consolidated. Function calling replaced earlier
+          patterns. Every engineering decision was made against a moving
+          floor.
         </p>
         <p>
-          The choices that aged best were the ones grounded in the product,
-          not the tooling: a job-split between explain and do; a UI that
-          embeds inside existing controls instead of adopting a chat-only
-          paradigm; a content pipeline owned by business so the answers
-          could evolve without engineering. The model under the hood will
-          change again. The shape of the features won't have to.
+          The choices that aged best were the ones grounded in the product:
+          a job-split between explain and do; a UI that embeds inside
+          existing controls instead of adopting a chat-only paradigm; a
+          content pipeline owned by business so the answers could evolve
+          without engineering. The model under the hood will change again.
+          The shape of the features won't have to.
         </p>
       </div>
     </section>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>dcg-ui — a Claude skill for design system consistency across stacks — A. Martin Castro</title>
+  <title>dcg-ui: a Claude skill for design system consistency across stacks · A. Martin Castro</title>
   <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -35,10 +35,10 @@
         <span class="dot">·</span>
         <span>Darling Consulting Group</span>
       </div>
-      <h1 class="case-title">dcg-ui — a Claude skill for design system consistency across stacks</h1>
+      <h1 class="case-title">dcg-ui: a Claude skill for design system consistency across stacks</h1>
       <p class="case-lede">
         A Claude skill built on top of DCG's Figma design system. Detects the
-        project's tech stack — <span class="redacted-line">VB6, Angular, Blazor, ASP.NET Core, React, more</span> —
+        project's tech stack (<span class="redacted-line">VB6, Angular, Blazor, ASP.NET Core, React, more</span>)
         and generates brand-correct components in the right idiom. Used daily
         by <strong>25 engineers and 4 product managers</strong>.
       </p>
@@ -85,13 +85,13 @@
           (still load-bearing in places), <em>Durandal</em> and <em>Knockout</em>
           (the previous web generation), <em>ASP.NET Core</em>, <em>Blazor</em>,
           <em>Angular</em>, and, increasingly, <em>React</em>. Every product
-          ships with the same logo, the same name on the same invoice — but
+          ships with the same logo and the same name on the same invoice, but
           historically each stack had its own UI dialect.
         </p>
         <p>
           The design system fixes <strong>what</strong> a DCG component should
           look like. The hard part has always been <strong>how to make that
-          true</strong> on every stack the company ships on — without sitting
+          true</strong> on every stack the company ships on, without sitting
           a designer behind each engineer.
         </p>
       </div>
@@ -106,21 +106,21 @@
         <p>
           The system itself was built in Figma over many years. Colors,
           typography, spacing, component variants, states, charts, and the
-          patterns that hold them together — all documented as the source of
+          patterns that hold them together, all documented as the source of
           truth for any DCG product.
         </p>
         <p>
           Designers can read it. Product managers can read it. Engineers can
           read it. But "readable" doesn't translate into a button that ships
           with the right corner radius on a Blazor page in a 2019 codebase.
-          For that, somebody has to apply judgment — historically, me.
+          For that, somebody has to apply judgment. Historically, me.
         </p>
         <p>
           The system gets unusually detailed where it matters most for
           financial software. Data visualization, for instance, has its own
           multi-page treatment: chart anatomy, tooltip type sizes, legend
           ordering and wrapping behavior, and a separate institution /
-          cross-institution palette specifically for data series — distinct
+          cross-institution palette specifically for data series, distinct
           from the brand palette. Charts are the most data-dense UI element
           in DCG products and the most likely place for brand drift if every
           stack implements them on its own.
@@ -129,8 +129,8 @@
         <figure class="case-figure">
           <img src="../../assets/dcg-ui/image%205.png" alt="DCG Figma design system page showing chart anatomy — tile header, plotted data, tile header detail, tile, tooltip, Y-axis, X-axis, and legend, all labeled" />
           <figcaption>
-            Charts anatomy. Every part labeled — tile, plot, tooltip, axes,
-            legend — so a chart implementation in any stack knows what "a
+            Charts anatomy. Every part labeled (tile, plot, tooltip, axes,
+            legend) so a chart implementation in any stack knows what "a
             chart" actually contains.
           </figcaption>
         </figure>
@@ -139,7 +139,7 @@
           <img src="../../assets/dcg-ui/image%206.png" alt="DCG Figma design system page showing chart labels, tooltips, legends, and the institution / cross-institution color palettes with exact hex values" />
           <figcaption>
             Labels, legends, and color. The institution and cross-institution
-            data-viz palettes — distinct from the brand palette — with exact
+            data-viz palettes (distinct from the brand palette) with exact
             hex values, plus rules for legend wrapping, 9px Avenir tooltip
             type, and grayscale market rates.
           </figcaption>
@@ -228,7 +228,7 @@
         </div>
 
         <p>
-          The skill is the same shape for every other token — typography, button
+          The skill is the same shape for every other token: typography, button
           variants, input states, validation colors, chart palettes, the
           difference between a generic toggle and the amber cross-institution
           toggle. Designer intent, machine-readable.
@@ -243,10 +243,10 @@
       </div>
       <div class="case-body">
         <p>
-          The unlock isn't the palette — it's the <strong>per-stack output</strong>.
+          The <strong>per-stack output</strong> is what makes this work.
           Before the skill generates anything, it detects the project's
           framework from files in the working directory. Then it adapts the
-          component to that framework's conventions — template syntax, data
+          component to that framework's conventions: template syntax, data
           binding, lifecycle, file layout.
         </p>
 
@@ -278,8 +278,8 @@ lifecycle, etc.).</code></pre>
           <img src="../../assets/dcg-ui/image%207%20(1).png" alt="PowerShell terminal showing the dcg-ui Claude skill being invoked and reporting its capabilities: building components, reviewing components, analyzing UX flows, and verifying branding" />
           <figcaption>
             The dcg-ui skill loading in a Windows PowerShell session. The
-            skill activates with its own elevator pitch — UI designer, UX
-            analyst, and brand expert — and surfaces what it can do before
+            skill activates with its own elevator pitch (UI designer, UX
+            analyst, and brand expert) and surfaces what it can do before
             the developer asks anything: build, review, analyze, verify.
           </figcaption>
         </figure>
@@ -295,7 +295,7 @@ lifecycle, etc.).</code></pre>
         <ul class="ui-bullets">
           <li>
             <strong>25 engineers</strong> use the skill across DCG's product
-            suite — from VB6 maintainers to React engineers on the newest
+            suite, from VB6 maintainers to React engineers on the newest
             surfaces.
           </li>
           <li>
@@ -333,7 +333,7 @@ lifecycle, etc.).</code></pre>
         </p>
         <p>
           That's the part I'm thinking about for the next version. The Figma
-          system is finite — you can fully describe the rules once and
+          system is finite: you can fully describe the rules once and
           they're done. The set of people who can usefully apply those rules
           isn't finite. A skill is a force multiplier for everyone
           downstream of it.
