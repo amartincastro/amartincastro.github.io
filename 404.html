@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>404 — A. Martin Castro</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a href="/" class="brand-link" aria-label="Back to home">
+      <div class="brand">
+        <span class="brand-mark">~/</span><span class="brand-name">amartincastro</span>
+      </div>
+    </a>
+    <nav>
+      <a href="/#about"><span class="nav-num">01</span> about</a>
+      <a href="/#work"><span class="nav-num">02</span> work</a>
+      <a href="/#contact"><span class="nav-num">03</span> contact</a>
+    </nav>
+  </header>
+
+  <main class="not-found">
+    <div class="not-found-terminal" aria-hidden="true">
+      <p class="terminal-line"><span class="prompt">$</span> open <span class="attempted-path">/</span></p>
+      <p class="terminal-line terminal-error">error: page not found</p>
+    </div>
+
+    <h1 class="not-found-title">404</h1>
+    <p class="not-found-lede">
+      The page you wanted isn't here. It may have been moved, renamed,
+      or never existed at all.
+    </p>
+
+    <a class="not-found-home" href="/">← back to amartincastro</a>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-left">
+      <span class="prompt">$</span> echo "© 2026 A. Martin Castro"
+    </div>
+    <div class="footer-links">
+      <a href="mailto:castroarielm@gmail.com">email</a>
+      <a href="https://github.com/amartincastro">github</a>
+      <a href="https://linkedin.com/in/arielmcastro">linkedin</a>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var path = (window.location.pathname || '/') + (window.location.search || '');
+      document.querySelectorAll('.attempted-path').forEach(function (el) {
+        el.textContent = path;
+      });
+    })();
+  </script>
+  <script data-goatcounter="https://amartincastro.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

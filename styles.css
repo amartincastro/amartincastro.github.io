@@ -442,6 +442,69 @@ main {
   transform: translateX(3px);
 }
 
+/* 404 page */
+.not-found {
+  max-width: 56rem;
+  margin: 0 auto;
+  padding: 6rem 2rem 5rem;
+}
+
+.not-found-terminal {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.9rem;
+  margin-bottom: 2.5rem;
+  color: var(--ink-soft);
+}
+
+.not-found-terminal .terminal-line {
+  margin: 0 0 0.35rem;
+  line-height: 1.6;
+}
+
+.not-found-terminal .terminal-error {
+  color: var(--ink-faint);
+}
+
+.not-found-terminal .attempted-path {
+  color: var(--ink);
+}
+
+.not-found-title {
+  font-family: "Inter", sans-serif;
+  font-size: clamp(3.5rem, 9vw, 6rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  margin: 0 0 1.5rem;
+  color: var(--ink);
+}
+
+.not-found-lede {
+  font-size: 1.15rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin: 0 0 3rem;
+  max-width: 36em;
+}
+
+.not-found-home {
+  display: inline-block;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  transition: color 0.15s ease;
+}
+
+.not-found-home:hover {
+  color: var(--accent);
+}
+
+@media (max-width: 768px) {
+  .not-found {
+    padding: 3rem 1.25rem 3rem;
+  }
+}
+
 /* Footer */
 .site-footer {
   max-width: var(--max);
