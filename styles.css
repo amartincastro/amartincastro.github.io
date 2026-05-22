@@ -306,6 +306,30 @@ main {
   font-weight: 500;
 }
 
+.about-personal {
+  margin: 1.75rem 0 0;
+  display: grid;
+  grid-template-columns: 7rem 1fr;
+  gap: 0.65rem 1.5rem;
+  align-items: baseline;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+}
+
+.about-personal dt {
+  font-size: 0.75rem;
+  color: var(--ink-faint);
+  letter-spacing: 0.04em;
+  text-transform: lowercase;
+  margin: 0;
+}
+
+.about-personal dd {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
 /* Work */
 .work {
   padding: 5rem 0 6rem;
@@ -372,7 +396,6 @@ main {
 
 .col-year { width: 5rem; }
 .col-role { width: 11rem; }
-.col-stack { width: 11rem; }
 .col-link { width: 2.5rem; text-align: right; }
 
 .project-row td {
@@ -405,6 +428,12 @@ main {
 .col-stack {
   font-family: "JetBrains Mono", monospace;
   font-size: 0.8rem !important;
+  white-space: nowrap;
+}
+
+.col-stack .redacted {
+  padding: 0.05em 0.3em;
+  letter-spacing: 0.02em;
 }
 
 .project-name {
@@ -635,6 +664,20 @@ main {
   .about-headshot {
     width: 4rem;
     height: 4rem;
+  }
+
+  .about-personal {
+    grid-template-columns: 1fr;
+    gap: 0.15rem 0;
+    margin-top: 1.25rem;
+  }
+
+  .about-personal dt {
+    margin-top: 0.75rem;
+  }
+
+  .about-personal dt:first-child {
+    margin-top: 0;
   }
 
   .work {
