@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>OG card (build artifact)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    html, body { margin: 0; padding: 0; }
+    body {
+      width: 1200px;
+      height: 630px;
+      background: #0e0e10;
+      color: #ededee;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 80px 96px;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+    .brand {
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-size: 26px;
+      letter-spacing: -0.01em;
+    }
+    .brand .mark { color: #6a6a72; }
+    .brand .name { color: #ededee; }
+    .brand .cursor {
+      display: inline-block;
+      width: 3px;
+      height: 22px;
+      background: #7dd3a3;
+      vertical-align: -3px;
+      margin-left: 6px;
+    }
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+    .name-large {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 96px;
+      letter-spacing: -0.035em;
+      line-height: 1;
+      color: #ededee;
+      margin: 0;
+    }
+    .role {
+      font-size: 30px;
+      color: #a5a5ad;
+      letter-spacing: -0.005em;
+      max-width: 1000px;
+      line-height: 1.35;
+      margin: 0;
+    }
+    .role strong {
+      color: #ededee;
+      font-weight: 500;
+    }
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      color: #6a6a72;
+      font-size: 18px;
+    }
+    .footer .url {
+      color: #a5a5ad;
+    }
+    .accent {
+      color: #7dd3a3;
+    }
+  </style>
+</head>
+<body>
+  <div class="brand">
+    <span class="mark">~/</span><span class="name">amartincastro</span><span class="cursor"></span>
+  </div>
+  <div class="content">
+    <h1 class="name-large">Ariel Martin Castro</h1>
+    <p class="role">UI design &amp; engineering at <strong>Darling Consulting Group</strong>. UI for bank CFOs, U.S. service members, and state law enforcement.</p>
+  </div>
+  <div class="footer">
+    <span><span class="accent">$</span> portfolio</span>
+    <span class="url">amartincastro.github.io</span>
+  </div>
+</body>
+</html>
